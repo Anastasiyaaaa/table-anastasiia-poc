@@ -1,0 +1,90 @@
+.table-wrapper{
+    overflow-x: scroll;
+}
+.table-wrapper .summaryCardContainer{
+    width: 100%;
+}
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #dddddd;
+    border-collapse: collapse;
+}
+
+.table .th_column {
+    text-align: center;
+    word-wrap: break-word;
+    white-space: pre;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-weight: bold;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.01071em;
+    display: table-cell;
+    vertical-align: inherit;
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
+    padding: 10px;
+    color: rgba(0, 0, 0, 0.87);
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: #fff;
+}
+
+.table .th_column:nth-child(2),
+.table td:nth-child(2){
+    text-align: left;
+}
+.table.shows-table .th_column:nth-child(2),
+.table.shows-table td:nth-child(2){
+    text-align: center;
+}
+
+.table .th_column button.active {
+    background: rgba(0, 209, 0, 0.7);
+}
+
+.table td {
+    padding: 5px;
+    white-space: pre;
+    font-family: "Roboto" !important;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 0.01071em;
+    display: table-cell;
+    vertical-align: inherit;
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
+    text-align: center;
+}
+
+.innerTable{
+    width: 100%;
+}
+
+.innerTable td {
+    border-bottom: none;
+    padding: 5px 0;
+}
+
+.subRow{
+    display: flex;
+    padding: 5px 0 5px 3%;
+}
+
+.subRow div{
+    display: inline-block;
+    text-align: left;
+}
+
+.table td p, table td a  {
+    line-height: 16px;
+    margin: 0;
+}
+.table .innerColumnRow{
+    text-align: center;
+    line-height: 20px;
+}
+.table .innerColumnRow > div{
+    margin: 10px 0;
+}
