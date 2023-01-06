@@ -6,7 +6,7 @@ import TableBody from './tableBody/TableBody';
 import TableHeader from './tableHeader/TableHeader';
 
 import {IOrder, ISchedule, IScreen, IShow} from '../typesApp/campaigns';
-import { ITableColStructure, ITableSubValueStructure } from 'src/LibRT/types';
+import { ITableColStructure, ITableSubValueStructure } from 'src/types';
 
 import './Table.css';
 

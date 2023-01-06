@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { format, parseISO } from 'date-fns';
 
-import { FormatDate, FormatNum, ITableColStructure, LinkType } from 'src/LibRT/types';
+import { FormatDate, FormatNum, ITableColStructure, LinkType } from 'src/types';
 
 // to be redesigned after implementation of sub-row
 function fnExpand() {
@@ -34,12 +34,12 @@ function fnNameValueLink(dataObj: ITableColStructure | any, argList: string[], c
     default:
       return (
         // style={{ textDecoration: 'none' }} ??? is this required as link shows underline
-        // <Link to={encodeURIComponent(link)}>
-        //   <p>{name}</p>
-        // </Link>
-        <a href=''>
+        <Link to={encodeURIComponent(link)}>
           <p>{name}</p>
-        </a>
+        </Link>
+        // <a href=''>
+        //   <p>{name}</p>
+        // </a>
       );
   }
 }
