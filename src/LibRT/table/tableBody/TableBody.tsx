@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { ITotalData } from 'src/LibRT/typesApp/totalData';
+import { ITotalData } from '../../typesApp/totalData';
 
 import getValueFunction from '../../store/table-valueFunctions';
 import TableRow from './TableRow';
 
-import {IOrder, ISchedule, IScreen, IShow} from 'src/LibRT/typesApp/campaigns';
+import {IOrder, ISchedule, IScreen, IShow} from '../../typesApp/campaigns';
 import { ITableColStructure, ITableSubValueStructure } from 'src/LibRT/types';
 
 interface IExpandableTable {

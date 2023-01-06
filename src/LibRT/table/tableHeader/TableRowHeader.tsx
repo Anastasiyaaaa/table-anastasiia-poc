@@ -1,7 +1,7 @@
 import React from 'react';
 
-import TableColumnHeader from 'src/LibRT/table/tableHeader/TableColumnHeader';
-import { ITableColStructure } from 'src/LibRT/types';
+import TableColumnHeader from './TableColumnHeader';
+import { ITableColStructure } from '../../types';
 
 interface ITable {
   tableColumnStructure: ITableColStructure[];

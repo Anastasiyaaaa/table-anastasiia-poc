@@ -6,7 +6,6 @@ import {tableOrderColumnStructure, tableOrderSubRowStructure} from 'src/AppRT/st
 import {tableTotalData} from 'src/AppRT/store/apiStructure/dataTotalApiHardcode';
 import TableRT from 'src/LibRT/table/Table';
 
-
 export const root = ReactDOM.createRoot(document.getElementById('root')!);
 
 root.render(
