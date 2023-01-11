@@ -79,7 +79,7 @@ const TableBody: React.FC<IExpandableTable> = ({ valueFunction, subRowStructure,
 
               subRowLine.push([
                 subRowStructureObj.row_flex,
-                getValueFunction(dataColValue, tableDataItem, dataColLink)!,
+                valueFunction(dataColValue, tableDataItem, dataColLink)!,
               ]);
             });
           // push line array with value to all line's array
