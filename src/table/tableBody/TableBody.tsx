@@ -18,9 +18,12 @@ interface IExpandableTable {
     | IScreen[]
     | IShow[]
     | undefined;
+  valueFunction: (a: string[] | null,
+                  b: ITotalData | IOrder | ISchedule | IScreen | IShow,
+                  c: string[] | null) => void;
 }
 
-const TableBody: React.FC<IExpandableTable> = ({ subRowStructure, tableColumnStructure, tableData }) => {
+const TableBody: React.FC<IExpandableTable> = ({ valueFunction, subRowStructure, tableColumnStructure, tableData }) => {
   let subRowsDataList: (string | any)[][][] | undefined;
   // rowsDataList is an array of totalCellValue so [][][]
   // const a = tableData?.filter((el, i) => i < 2);
@@ -36,8 +39,8 @@ const TableBody: React.FC<IExpandableTable> = ({ subRowStructure, tableColumnStr
 
         if (columnStructure.col_visible) {
           totalCellValue.push([
-            getValueFunction(dataColValue, tableDataItem, dataColLink)!,
-            getValueFunction(dataColSubValue, tableDataItem, dataColLink)!,
+            valueFunction(dataColValue, tableDataItem, dataColLink)!,
+            valueFunction(dataColSubValue, tableDataItem, dataColLink)!,
           ]);
         }
       });
