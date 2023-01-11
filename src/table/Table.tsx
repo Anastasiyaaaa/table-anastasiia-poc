@@ -20,16 +20,16 @@ interface IExpandableTable {
     | IShow[];
   tableColumnStructure: ITableColStructure[];
   className: string | undefined;
-  getValueFunction: ( a: string[] | null,
+  valueFunction: ( a: string[] | null,
                       b: ITotalData | IOrder | ISchedule | IScreen | IShow,
                       c: string[] | null ) => void;
 }
 
-const TableRT: React.FC<IExpandableTable> = ({ className, subRowStructure, tableData, tableColumnStructure, getValueFunction }) => (
+const TableRT: React.FC<IExpandableTable> = ({ className, subRowStructure, tableData, tableColumnStructure, valueFunction }) => (
   <div className='table-wrapper'>
     <table className={className !== undefined ? `${className} table` : 'table'}>
       <TableHeader tableColumnStructure={tableColumnStructure} />
-      <TableBody valueFunction={getValueFunction} subRowStructure={subRowStructure} tableColumnStructure={tableColumnStructure} tableData={tableData} />
+      <TableBody valueFunction={valueFunction} subRowStructure={subRowStructure} tableColumnStructure={tableColumnStructure} tableData={tableData} />
     </table>
   </div>
 );
