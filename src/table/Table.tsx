@@ -19,19 +19,28 @@ interface IExpandableTable {
     | IScreen[]
     | IShow[];
   tableColumnStructure: ITableColStructure[];
+  breadCrumbsHook: (identifier: string, value: any) => void | null;
+  navigationHook: any;
   className: string | undefined;
-  valueFunction: ( a: string[] | null,
-                      b: ITotalData | IOrder | ISchedule | IScreen | IShow,
-                      c: string[] | null ) => void;
+  valueFunction: ( colValue: string[] | null,
+                   dataObj: ITotalData | IOrder | ISchedule | IScreen | IShow,
+                   colLink: string[] | null,
+                   breadCrumbsHook: (identifier: string, value: any) => void | null,
+                   navigationHook: any) => void;
+  text: string;
 }
 
-const TableRT: React.FC<IExpandableTable> = ({ className, subRowStructure, tableData, tableColumnStructure, valueFunction }) => (
-  <div className='table-wrapper'>
-    <table className={className !== undefined ? `${className} table` : 'table'}>
-      <TableHeader tableColumnStructure={tableColumnStructure} />
-      <TableBody valueFunction={valueFunction} subRowStructure={subRowStructure} tableColumnStructure={tableColumnStructure} tableData={tableData} />
-    </table>
-  </div>
-);
+const TableRT: React.FC<IExpandableTable> = ({ text, className, subRowStructure, tableData, tableColumnStructure, valueFunction, breadCrumbsHook,  navigationHook}) => {
+  console.log(text)
+  console.log(tableData)
+  return (
+    <div className='table-wrapper'>
+      <table className={className !== undefined ? `${className} table` : 'table'}>
+        <TableHeader tableColumnStructure={tableColumnStructure} />
+        <TableBody breadCrumbsHook={breadCrumbsHook} navigationHook={navigationHook} valueFunction={valueFunction} subRowStructure={subRowStructure} tableColumnStructure={tableColumnStructure} tableData={tableData} />
+      </table>
+    </div>
+  );
+}
 
 export default TableRT;

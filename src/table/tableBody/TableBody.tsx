@@ -18,16 +18,20 @@ interface IExpandableTable {
     | IScreen[]
     | IShow[]
     | undefined;
-  valueFunction: (a: string[] | null,
-                  b: ITotalData | IOrder | ISchedule | IScreen | IShow,
-                  c: string[] | null) => void;
+  valueFunction: ( colValue: string[] | null,
+                   dataObj: ITotalData | IOrder | ISchedule | IScreen | IShow,
+                   colLink: string[] | null,
+                   breadCrumbsHook: (identifier: string, value: any) => void | null,
+                   navigationHook: any) => void;
+  breadCrumbsHook: (identifier: string, value: any) => void | null;
+  navigationHook: any;
 }
 
-const TableBody: React.FC<IExpandableTable> = ({ valueFunction, subRowStructure, tableColumnStructure, tableData }) => {
+const TableBody: React.FC<IExpandableTable> = ({ subRowStructure, tableColumnStructure, tableData, valueFunction, breadCrumbsHook,  navigationHook }) => {
   let subRowsDataList: (string | any)[][][] | undefined;
   // rowsDataList is an array of totalCellValue so [][][]
   // const a = tableData?.filter((el, i) => i < 2);
-
+  console.log(breadCrumbsHook)
   const rowsDataList = tableData?.map(
     (tableDataItem: ITotalData | IOrder | ISchedule | IScreen | IShow) => {
       const totalCellValue: (string | JSX.Element)[][] = [];
@@ -39,8 +43,8 @@ const TableBody: React.FC<IExpandableTable> = ({ valueFunction, subRowStructure,
 
         if (columnStructure.col_visible) {
           totalCellValue.push([
-            valueFunction(dataColValue, tableDataItem, dataColLink)!,
-            valueFunction(dataColSubValue, tableDataItem, dataColLink)!,
+            valueFunction(dataColValue, tableDataItem, dataColLink, breadCrumbsHook,  navigationHook)!,
+            valueFunction(dataColSubValue, tableDataItem, dataColLink, breadCrumbsHook,  navigationHook)!,
           ]);
         }
       });
@@ -79,7 +83,7 @@ const TableBody: React.FC<IExpandableTable> = ({ valueFunction, subRowStructure,
 
               subRowLine.push([
                 subRowStructureObj.row_flex,
-                valueFunction(dataColValue, tableDataItem, dataColLink)!,
+                valueFunction(dataColValue, tableDataItem, dataColLink, breadCrumbsHook,  navigationHook)!,
               ]);
             });
           // push line array with value to all line's array
