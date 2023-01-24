@@ -12,12 +12,7 @@ import './Table.css';
 
 interface IExpandableTable {
   subRowStructure: ITableSubValueStructure[] | undefined;
-  tableData?:
-    | ITotalData[]
-    | IOrder[]
-    | ISchedule[]
-    | IScreen[]
-    | IShow[];
+  tableData?: any[];
   tableColumnStructure: ITableColStructure[];
   className: string | undefined;
   valueFunction: ( ...item: any) => void;
