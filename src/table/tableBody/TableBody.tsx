@@ -10,13 +10,7 @@ import { ITableColStructure, ITableSubValueStructure } from './../../types';
 interface IExpandableTable {
   subRowStructure: ITableSubValueStructure[] | undefined;
   tableColumnStructure: ITableColStructure[];
-  tableData?:
-    | ITotalData[]
-    | IOrder[]
-    | ISchedule[]
-    | IScreen[]
-    | IShow[]
-    | undefined;
+  tableData?: any[];
   // valueFunction: ( colValue: string[] | null,
   //                  dataObj: ITotalData | IOrder | ISchedule | IScreen | IShow,
   //                  colLink: string[] | null,
