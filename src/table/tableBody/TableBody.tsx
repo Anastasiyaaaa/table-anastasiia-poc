@@ -2,7 +2,6 @@ import React from 'react';
 
 import { ITotalData } from '../../typesApp/totalData';
 
-import getValueFunction from '../../store/table-valueFunctions';
 import TableRow from './TableRow';
 
 import {IOrder, ISchedule, IScreen, IShow} from '../../typesApp/campaigns';
@@ -18,20 +17,18 @@ interface IExpandableTable {
     | IScreen[]
     | IShow[]
     | undefined;
-  valueFunction: ( colValue: string[] | null,
-                   dataObj: ITotalData | IOrder | ISchedule | IScreen | IShow,
-                   colLink: string[] | null,
-                   breadCrumbsHook: (identifier: string, value: any) => void | null,
-                   navigationHook: any) => void;
-  breadCrumbsHook: (identifier: string, value: any) => void | null;
-  navigationHook: any;
+  // valueFunction: ( colValue: string[] | null,
+  //                  dataObj: ITotalData | IOrder | ISchedule | IScreen | IShow,
+  //                  colLink: string[] | null,
+  //                  uniqueData: any[]) => void;
+  valueFunction: (...item: any) => void;
+  uniqueData: any[];
 }
 
-const TableBody: React.FC<IExpandableTable> = ({ subRowStructure, tableColumnStructure, tableData, valueFunction, breadCrumbsHook,  navigationHook }) => {
+const TableBody: React.FC<IExpandableTable> = ({ uniqueData, subRowStructure, tableColumnStructure, tableData, valueFunction }) => {
   let subRowsDataList: (string | any)[][][] | undefined;
   // rowsDataList is an array of totalCellValue so [][][]
   // const a = tableData?.filter((el, i) => i < 2);
-  console.log(breadCrumbsHook)
   const rowsDataList = tableData?.map(
     (tableDataItem: ITotalData | IOrder | ISchedule | IScreen | IShow) => {
       const totalCellValue: (string | JSX.Element)[][] = [];
@@ -43,8 +40,8 @@ const TableBody: React.FC<IExpandableTable> = ({ subRowStructure, tableColumnStr
 
         if (columnStructure.col_visible) {
           totalCellValue.push([
-            valueFunction(dataColValue, tableDataItem, dataColLink, breadCrumbsHook,  navigationHook)!,
-            valueFunction(dataColSubValue, tableDataItem, dataColLink, breadCrumbsHook,  navigationHook)!,
+            valueFunction(dataColValue, tableDataItem, dataColLink, uniqueData)!,
+            valueFunction(dataColSubValue, tableDataItem, dataColLink, uniqueData)!,
           ]);
         }
       });
@@ -83,7 +80,7 @@ const TableBody: React.FC<IExpandableTable> = ({ subRowStructure, tableColumnStr
 
               subRowLine.push([
                 subRowStructureObj.row_flex,
-                valueFunction(dataColValue, tableDataItem, dataColLink, breadCrumbsHook,  navigationHook)!,
+                valueFunction(dataColValue, tableDataItem, dataColLink)!,
               ]);
             });
           // push line array with value to all line's array
