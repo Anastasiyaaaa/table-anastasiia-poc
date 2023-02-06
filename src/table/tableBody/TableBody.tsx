@@ -1,11 +1,12 @@
 import React from 'react';
 
-import { ITotalData } from '../../typesApp/totalData';
+import { ITotalData } from '../../types/typesApp/totalData';
 
 import TableRow from './TableRow';
 
-import {IOrder, ISchedule, IScreen, IShow} from '../../typesApp/campaigns';
+import {IOrder, ISchedule, IScreen, IShow} from '../../types/typesApp/campaigns';
 import { ITableColStructure, ITableSubValueStructure } from './../../types';
+
 
 interface IExpandableTable {
   subRowStructure: ITableSubValueStructure[] | undefined;
