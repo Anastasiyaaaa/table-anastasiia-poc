@@ -6,6 +6,7 @@ import TableRow from './TableRow';
 
 import {IOrder, ISchedule, IScreen, IShow} from '../../types/typesApp/campaigns';
 import { ITableColStructure, ITableSubValueStructure } from './../../types';
+import getValueFunction from "src/table/table-valueFunctions";
 
 
 interface IExpandableTable {
@@ -16,11 +17,10 @@ interface IExpandableTable {
   //                  dataObj: ITotalData | IOrder | ISchedule | IScreen | IShow,
   //                  colLink: string[] | null,
   //                  uniqueData: any[]) => void;
-  valueFunction: (...item: any) => void;
   uniqueData: any[];
 }
 
-const TableBody: React.FC<IExpandableTable> = ({ uniqueData, subRowStructure, tableColumnStructure, tableData, valueFunction }) => {
+const TableBody: React.FC<IExpandableTable> = ({ uniqueData, subRowStructure, tableColumnStructure, tableData }) => {
   let subRowsDataList: (string | any)[][][] | undefined;
   // rowsDataList is an array of totalCellValue so [][][]
   // const a = tableData?.filter((el, i) => i < 2);
@@ -35,8 +35,8 @@ const TableBody: React.FC<IExpandableTable> = ({ uniqueData, subRowStructure, ta
 
         if (columnStructure.col_visible) {
           totalCellValue.push([
-            valueFunction(dataColValue, tableDataItem, dataColLink, uniqueData)!,
-            valueFunction(dataColSubValue, tableDataItem, dataColLink, uniqueData)!,
+            getValueFunction(dataColValue, tableDataItem, dataColLink, uniqueData)!,
+            getValueFunction(dataColSubValue, tableDataItem, dataColLink, uniqueData)!,
           ]);
         }
       });
@@ -75,7 +75,7 @@ const TableBody: React.FC<IExpandableTable> = ({ uniqueData, subRowStructure, ta
 
               subRowLine.push([
                 subRowStructureObj.row_flex,
-                valueFunction(dataColValue, tableDataItem, dataColLink)!,
+                getValueFunction(dataColValue, tableDataItem, dataColLink, uniqueData)!,
               ]);
             });
           // push line array with value to all line's array
