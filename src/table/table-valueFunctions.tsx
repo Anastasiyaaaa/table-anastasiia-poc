@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { format, parseISO } from 'date-fns';
 
-import { FormatDate, FormatNum, ITableColStructure, LinkType } from 'src/types';
+import { FormatDate, FormatNum, ITableColStructure, LinkType } from '../types';
 
 // to be redesigned after implementation of sub-row
 function fnExpand() {
