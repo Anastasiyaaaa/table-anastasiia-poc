@@ -6,7 +6,7 @@ import TableRow from './TableRow';
 
 import {IOrder, ISchedule, IScreen, IShow} from '../../types/typesApp/campaigns';
 import { ITableColStructure, ITableSubValueStructure } from './../../types';
-import getValueFunction from "src/table/table-valueFunctions";
+import getValueFunction from "../table-valueFunctions";
 
 
 interface IExpandableTable {
