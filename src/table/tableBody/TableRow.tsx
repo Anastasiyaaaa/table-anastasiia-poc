@@ -16,7 +16,7 @@ const TableRow: React.FC<IExpandableTable> = ({ index, row, subRow }) => {
     setOPen(!open);
   };
 
-  const columns = row?.map((item, i: number) => <TableColumn key={i} label={item[0]} subLabel={item[1]} toggle={toggle}/>);
+  const columns = row?.map((item, i: number) => <TableColumn key={i} id={i} label={item[0]} subLabel={item[1]} toggle={toggle}/>);
 
   const subRowValues = (
     <td colSpan={row.length}>
