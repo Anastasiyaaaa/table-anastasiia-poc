@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import TableColumn from './TableColumn';
 
@@ -11,12 +11,17 @@ interface IExpandableTable {
 }
 
 const TableRow: React.FC<IExpandableTable> = ({ index, row, subRow }) => {
-  const columns = row?.map((item, i: number) => <TableColumn key={i} label={item[0]} subLabel={item[1]} />);
+  const [open, setOPen] = useState(false);
+  const toggle = () => {
+    setOPen(!open);
+  };
+
+  const columns = row?.map((item, i: number) => <TableColumn key={i} label={item[0]} subLabel={item[1]} toggle={toggle}/>);
 
   const subRowValues = (
     <td colSpan={row.length}>
       {/* line by line get the array */}
-      {subRow?.map((values, i) => (
+      {open && subRow?.map((values, i) => (
         <div className='subRow' key={i}>
           {/* get values per line */}
           {values.map((value, iValue) => (
