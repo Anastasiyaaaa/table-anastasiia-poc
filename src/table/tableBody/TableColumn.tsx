@@ -21,7 +21,7 @@ const TableColumn: React.FC<IExpandableTable> = ({ id, label, subLabel, toggle }
     );
   } else if (id === 0){
     console.log(id)
-    columnValue = <td onClick={(() => toggle)}> {label} </td>;
+    columnValue = <td onClick={(() => console.log('toggle'))}> {label} </td>;
   } else{
     columnValue = <td> {label} </td>;
   }
