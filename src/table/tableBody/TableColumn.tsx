@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 interface IExpandableTable {
-  id: number;
   label: string | any;
   subLabel: string | any;
   toggle: () => void;
 }
 
-const TableColumn: React.FC<IExpandableTable> = ({ id, label, subLabel, toggle }) => {
-  const [open, setOPen] = useState(false);
-
+const TableColumn: React.FC<IExpandableTable> = ({ label, subLabel, toggle }) => {
   let columnValue;
 
   if (subLabel !== '' && subLabel !== undefined) {
@@ -19,9 +16,8 @@ const TableColumn: React.FC<IExpandableTable> = ({ id, label, subLabel, toggle }
         <div>{subLabel}</div>
       </td>
     );
-  } else if (id === 0){
-    console.log(id)
-    columnValue = <td className='tttt' onClick={toggle}> {label} </td>;
+  } else if (label === '>'){
+    columnValue = <td className='expand' onClick={toggle}> {label} </td>;
   } else{
     columnValue = <td> {label} </td>;
   }

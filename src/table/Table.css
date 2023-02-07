@@ -88,3 +88,9 @@
 .table .innerColumnRow > div{
     margin: 10px 0;
 }
+.table .expand{
+    cursor: pointer;
+}
+.table .expand-open .expand{
+    transform: rotate(90deg);
+}

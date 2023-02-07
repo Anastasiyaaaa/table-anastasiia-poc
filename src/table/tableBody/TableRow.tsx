@@ -12,13 +12,14 @@ interface IExpandableTable {
 
 const TableRow: React.FC<IExpandableTable> = ({ index, row, subRow }) => {
   const [open, setOPen] = useState(false);
+
   const toggle = () => {
     console.log('toggle')
     setOPen(!open);
   };
 
   const columns = row?.map((item, i: number) => {
-    return <TableColumn key={i} id={i} label={item[0]} subLabel={item[1]} toggle={toggle}/>
+    return <TableColumn key={i} label={item[0]} subLabel={item[1]} toggle={toggle}/>
   });
 
   const subRowValues = (
@@ -37,6 +38,7 @@ const TableRow: React.FC<IExpandableTable> = ({ index, row, subRow }) => {
     </td>
   );
 
+
   // in 1st variant I wanted to put row and subrow in 1 <tr> and check event handler inside 1tr
   // and for that structure we need inner table
   // but this variant broke main column structure because of property collapse
@@ -45,7 +47,7 @@ const TableRow: React.FC<IExpandableTable> = ({ index, row, subRow }) => {
   // handle event we can by id, where index will connect row and subrow
   return (
     <>
-      <tr id={`row-${index}`}>{columns}</tr>
+      <tr className={open ? 'expand-open' : ''} id={`row-${index}`}>{columns}</tr>
       {open && subRow !== undefined && <tr id={`subRow-${index}`}>{subRowValues}</tr>}
     </>
   );
