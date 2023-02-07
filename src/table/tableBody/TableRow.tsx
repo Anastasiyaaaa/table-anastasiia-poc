@@ -17,14 +17,13 @@ const TableRow: React.FC<IExpandableTable> = ({ index, row, subRow }) => {
   };
 
   const columns = row?.map((item, i: number) => {
-    console.log(i)
     return <TableColumn key={i} id={i} label={item[0]} subLabel={item[1]} toggle={toggle}/>
   });
 
   const subRowValues = (
     <td colSpan={row.length}>
       {/* line by line get the array */}
-      {open && subRow?.map((values, i) => (
+      {subRow?.map((values, i) => (
         <div className='subRow' key={i}>
           {/* get values per line */}
           {values.map((value, iValue) => (
@@ -46,7 +45,7 @@ const TableRow: React.FC<IExpandableTable> = ({ index, row, subRow }) => {
   return (
     <>
       <tr id={`row-${index}`}>{columns}</tr>
-      {subRow !== undefined && <tr id={`subRow-${index}`}>{subRowValues}</tr>}
+      {open && subRow !== undefined && <tr id={`subRow-${index}`}>{subRowValues}</tr>}
     </>
   );
 };
