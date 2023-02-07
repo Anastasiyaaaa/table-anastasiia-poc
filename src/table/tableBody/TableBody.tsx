@@ -24,6 +24,8 @@ const TableBody: React.FC<IExpandableTable> = ({ uniqueData, subRowStructure, ta
   let subRowsDataList: (string | any)[][][] | undefined;
   // rowsDataList is an array of totalCellValue so [][][]
   // const a = tableData?.filter((el, i) => i < 2);
+  console.log(tableData?.length)
+  console.log('tableData')
   const rowsDataList = tableData?.map(
     (tableDataItem: ITotalData | IOrder | ISchedule | IScreen | IShow) => {
       const totalCellValue: (string | JSX.Element)[][] = [];

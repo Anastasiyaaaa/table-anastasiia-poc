@@ -15,13 +15,18 @@ interface IExpandableTable {
   uniqueData: any[]
 }
 
-const TableRT: React.FC<IExpandableTable> = ({ uniqueData, className, subRowStructure, tableData, tableColumnStructure}) => (
-  <div className='table-wrapper'>
-    <table className={className !== undefined ? `${className} table` : 'table'}>
-      <TableHeader tableColumnStructure={tableColumnStructure} />
-      <TableBody uniqueData={uniqueData} subRowStructure={subRowStructure} tableColumnStructure={tableColumnStructure} tableData={tableData} />
-    </table>
-  </div>
-);
+const TableRT: React.FC<IExpandableTable> = ({ uniqueData, className, subRowStructure, tableData, tableColumnStructure}) => {
+  console.log(tableData?.length)
+  console.log('tableData')
+
+  return (
+    <div className='table-wrapper'>
+      <table className={className !== undefined ? `${className} table` : 'table'}>
+        <TableHeader tableColumnStructure={tableColumnStructure} />
+        <TableBody uniqueData={uniqueData} subRowStructure={subRowStructure} tableColumnStructure={tableColumnStructure} tableData={tableData} />
+      </table>
+    </div>
+  );
+}
 
 export default TableRT;
