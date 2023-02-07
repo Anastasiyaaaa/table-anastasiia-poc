@@ -9,6 +9,7 @@ interface IExpandableTable {
 
 const TableColumn: React.FC<IExpandableTable> = ({ key, label, subLabel, toggle }) => {
   const [open, setOPen] = useState(false);
+  console.log(key)
 
   let columnValue;
 
