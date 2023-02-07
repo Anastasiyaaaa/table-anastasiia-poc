@@ -13,6 +13,7 @@ interface IExpandableTable {
 const TableRow: React.FC<IExpandableTable> = ({ index, row, subRow }) => {
   const [open, setOPen] = useState(false);
   const toggle = () => {
+    console.log('toggle')
     setOPen(!open);
   };
 
